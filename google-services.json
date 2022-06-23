@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "895314908558",
+    "project_id": "chatapp-ad813",
+    "storage_bucket": "chatapp-ad813.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895314908558:android:85f0aed2cb8203600300df",
+        "android_client_info": {
+          "package_name": "com.karthee.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "895314908558-iu917anaibpcq82o5m40vfuq4gb4fd2c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLXPhd3TrfdDZXXAxGg__CgdZwiC3PCV8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "895314908558-iu917anaibpcq82o5m40vfuq4gb4fd2c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
