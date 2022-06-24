@@ -295,8 +295,7 @@ class MainActivity : ActBase() {
         if (navController.isValidDestination(R.id.FSingleChatHome))
             finish()
         else if (navController.isValidDestination(R.id.FMyProfile) ||
-            navController.isValidDestination(R.id.FGroupChatHome) ||
-            navController.isValidDestination(R.id.FSearch)) {
+            navController.isValidDestination(R.id.FGroupChatHome) ) {
             val navOptions =
                 NavOptions.Builder().setPopUpTo(R.id.nav_host_fragment, true).build()
             Navigation.findNavController(this, R.id.nav_host_fragment)

@@ -55,9 +55,6 @@ class ChatHandler @Inject constructor(
     }
 
     fun initHandler() {
-//        if (instanceCreated)
-//            return
-        instanceCreated = true
         fromUser = preference.getUid()
         Timber.v("ChatHandler init")
         messageCollectionGroup = UserUtils.getMessageSubCollectionRef()

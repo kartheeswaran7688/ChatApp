@@ -21,7 +21,6 @@ import com.karthee.chatapp.databinding.FSingleChatBinding
 import com.karthee.chatapp.db.data.ChatUser
 import com.karthee.chatapp.db.data.Message
 import com.karthee.chatapp.db.data.TextMessage
-import com.karthee.chatapp.fragments.FAttachment
 import com.karthee.chatapp.models.UserProfile
 import com.karthee.chatapp.utils.*
 import com.karthee.chatapp.utils.Utils.edtValue
@@ -93,10 +92,6 @@ class FSingleChat : Fragment(), ItemClickListener,CustomEditText.KeyBoardInputCa
                 if(mMessagesList.isEmpty())
                     return@collect
                 messageList = mMessagesList as MutableList<Message>
-                if(AdChat.isPlaying()){
-                    msgPostponed=true
-                    return@collect
-                }
                 AdChat.messageList = messageList
                 adChat.submitList(mMessagesList)
                 //scroll to last items in recycler (recent messages)
@@ -122,10 +117,7 @@ class FSingleChat : Fragment(), ItemClickListener,CustomEditText.KeyBoardInputCa
             if (Utils.askContactPermission(this))
                 openSaveIntent()
         }
-        binding.viewChatBtm.imageAdd.setOnClickListener {
-            val fragment=FAttachment.newInstance(Bundle())
-            fragment.show(childFragmentManager,"")
-        }
+
     }
 
     private fun setDataInView() {
@@ -263,14 +255,6 @@ class FSingleChat : Fragment(), ItemClickListener,CustomEditText.KeyBoardInputCa
                 Timber.v("Cancelled Added Contact")
             }
         }
-        else
-            ImageUtils.cropImage(requireActivity(), data, true)
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
     override fun onCommitContent(inputContentInfo: InputContentInfoCompat?,

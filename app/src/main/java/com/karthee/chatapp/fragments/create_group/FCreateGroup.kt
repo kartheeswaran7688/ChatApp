@@ -1,19 +1,17 @@
 package com.karthee.chatapp.fragments.create_group
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.karthee.chatapp.R
 import com.karthee.chatapp.databinding.FCreateGroupBinding
-import com.karthee.chatapp.db.data.ChatUser
 import com.karthee.chatapp.db.daos.ChatUserDao
+import com.karthee.chatapp.db.data.ChatUser
 import com.karthee.chatapp.db.data.Group
 import com.karthee.chatapp.fragments.add_group_members.AdAddMembers
 import com.karthee.chatapp.utils.*
@@ -60,9 +58,7 @@ class FCreateGroup : Fragment() {
         binding.toolbar.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
-        binding.imageAddImage.setOnClickListener {
-            ImageUtils.askPermission(this)
-        }
+
         binding.fab.setOnClickListener {
           validate()
         }
@@ -110,33 +106,6 @@ class FCreateGroup : Fragment() {
         binding.listMembers.adapter = adMembers
         adMembers.addRestorePolicy()
         adMembers.submitList(memberList)
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        ImageUtils.onImagePerResult(this, *grantResults)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-//        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE)
-//            onCropResult(data)
-//        else
-            ImageUtils.cropImage(requireActivity(), data)
-    }
-
-    private fun onCropResult(data: Intent?) {
-        try {
-            val imagePath: Uri? = ImageUtils.getCroppedImage(data)
-            imagePath?.let {
-                viewModel.uploadProfileImage(it)
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
     }
 
     override fun onDestroy() {

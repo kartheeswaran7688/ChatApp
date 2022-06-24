@@ -54,18 +54,6 @@ object BindingAdapters {
         return str
     }
 
-    @BindingAdapter("imageUrl")
-    @JvmStatic
-    fun loadImage(view: ImageView, url: String?) {
-        if(url.isNullOrEmpty())
-            return
-        else {
-            ImageViewCompat.setImageTintList(view, null) //removing image tint
-            view.setPadding(0)
-        }
-        ImageUtils.loadUserImage(view, url)
-    }
-
     @BindingAdapter("lastMessage")
     @JvmStatic
     fun setLastMessage(txtView: TextView, msgList: List<Message>) {

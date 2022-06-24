@@ -84,10 +84,7 @@ class FGroupChat : Fragment(), ItemClickListener, CustomEditText.KeyBoardInputCa
                 if(message.isEmpty())
                     return@collect
                 messageList = message as MutableList<GroupMessage>
-                if(AdGroupChat.isPlaying()){
-                    msgPostponed=true
-                    return@collect
-                }
+
                 AdGroupChat.messageList = messageList
                 adChat.submitList(messageList)
                 Timber.v("Message list ${messageList.last()}")

@@ -28,7 +28,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/ic_other_user"
-                    app:imageUrl="@{chatUser.user.user.image}" />
+                    />
 
                 <TextView
                     android:visibility="@{(chatUser.user.user.image==null || chatUser.user.user.image.isEmpty) ? View.VISIBLE : View.GONE}"

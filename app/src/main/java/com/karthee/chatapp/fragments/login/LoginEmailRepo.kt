@@ -2,27 +2,16 @@ package com.karthee.chatapp.fragments.login
 
 
 import android.content.Context
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.Task
-import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
-import com.karthee.chatapp.models.Country
 import com.karthee.chatapp.ui.activities.MainActivity
-import com.karthee.chatapp.utils.LoadState
 import com.karthee.chatapp.utils.LogInFailedState
 import com.karthee.chatapp.utils.printMeD
-import com.karthee.chatapp.utils.toast
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ActivityRetainedScoped
-import timber.log.Timber
-import java.lang.Exception
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class LoginEmailRepo @Inject constructor(@ActivityRetainedScoped val actContxt: MainActivity,

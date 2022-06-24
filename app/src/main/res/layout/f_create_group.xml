@@ -44,7 +44,6 @@
                 <ImageView
                     android:id="@+id/image_add_image"
                     style="@style/FView"
-                    imageUrl="@{viewmodel.imageUrl}"
                     android:padding="16dp"
                     android:background="@drawable/shape_circle_blue"
                     android:src="@drawable/ic_add_pic"

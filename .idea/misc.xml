@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/a_roundbg.xml" value="0.1975" />
         <entry key="app/src/main/res/drawable/button_back.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/act_chat.xml" value="0.1" />
         <entry key="app/src/main/res/layout/act_splash.xml" value="0.234375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2789473684210526" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.16485507246376813" />
@@ -14,17 +17,35 @@
         <entry key="app/src/main/res/layout/f_create_group.xml" value="0.22239583333333332" />
         <entry key="app/src/main/res/layout/f_group_chat.xml" value="0.22239583333333332" />
         <entry key="app/src/main/res/layout/f_group_chat_home.xml" value="0.2625" />
+        <entry key="app/src/main/res/layout/f_image_src_sheet.xml" value="0.1" />
         <entry key="app/src/main/res/layout/f_login.xml" value="0.16458333333333333" />
         <entry key="app/src/main/res/layout/f_login_email.xml" value="0.16458333333333333" />
         <entry key="app/src/main/res/layout/f_my_profile.xml" value="0.3007246376811594" />
         <entry key="app/src/main/res/layout/f_profile.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/layout/f_single_chat_home.xml" value="0.22239583333333332" />
+        <entry key="app/src/main/res/layout/f_verify.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_row_chat.xml" value="0.22239583333333332" />
+        <entry key="app/src/main/res/layout/row_add_member.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/row_audio_receive.xml" value="0.11614583333333334" />
+        <entry key="app/src/main/res/layout/row_audio_sent.xml" value="0.11614583333333334" />
+        <entry key="app/src/main/res/layout/row_chat.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/row_contact.xml" value="0.11614583333333334" />
+        <entry key="app/src/main/res/layout/row_country.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/row_group_audio_receive.xml" value="0.1" />
         <entry key="app/src/main/res/layout/row_group_chat.xml" value="0.2625" />
+        <entry key="app/src/main/res/layout/row_search_contact.xml" value="0.11614583333333334" />
+        <entry key="app/src/main/res/layout/row_sticker_receive.xml" value="0.234375" />
+        <entry key="app/src/main/res/layout/row_sticker_sent.xml" value="0.234375" />
+        <entry key="app/src/main/res/layout/view_chat_toolbar.xml" value="0.11614583333333334" />
         <entry key="app/src/main/res/layout/view_group_chat_btm.xml" value="0.234375" />
         <entry key="app/src/main/res/layout/view_group_chat_toolbar.xml" value="0.22239583333333332" />
         <entry key="app/src/main/res/menu/menu_btm_nav.xml" value="0.2625" />
         <entry key="app/src/main/res/menu/menu_search.xml" value="0.2625" />
+        <entry key="app/src/main/res/mipmap-hdpi/ic_launcher.xml" value="0.1" />
+        <entry key="app/src/main/res/mipmap-mdpi/ic_launcher.xml" value="0.1" />
+        <entry key="app/src/main/res/mipmap-mdpi/ic_launcher_round.xml" value="0.1" />
+        <entry key="app/src/main/res/mipmap-xxxhdpi/ic_launcher.xml" value="0.1" />
+        <entry key="app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.xml" value="0.1" />
       </map>
     </option>
   </component>

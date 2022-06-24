@@ -28,7 +28,6 @@
                 <ImageView
                     android:id="@+id/image_profile"
                     style="@style/FView"
-                    imageUrl="@{viewModel.imageUrl}"
                     android:src="@drawable/ic_other_user" />
 
                 <ProgressBar

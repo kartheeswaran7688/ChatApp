@@ -8,7 +8,6 @@ import android.os.Build
 import android.provider.ContactsContract
 import android.provider.Settings
 import android.text.TextUtils
-
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.CollectionReference
@@ -44,8 +43,6 @@ import org.greenrobot.eventbus.EventBus
 import org.json.JSONObject
 import timber.log.Timber
 import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 import kotlin.system.measureNanoTime
 
 object UserUtils {
@@ -153,19 +150,6 @@ object UserUtils {
         }
         cursor.close()
         return contacts.sortedWith(compareBy { it.name })
-    }
-
-    private fun getCountryCodeRemovedList(context: Context, contacts: ArrayList<Contact>): HashMap<String, String> {
-        val hashMap:HashMap<String, String> = HashMap() //hashmap to get rid of duplication
-        val preference=MPreference(context)
-        contacts.forEach { contact ->
-            if (contact.email.length <= 5 ||
-                contact.email.contains(preference.getEmail()!!))
-                return@forEach
-            var email=contact.email
-            hashMap[email.replace(" ", "")] = contact.name
-        }
-        return hashMap
     }
 
     fun getDeviceInfo(context: Context): JSONObject {

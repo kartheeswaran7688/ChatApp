@@ -46,7 +46,7 @@
                             android:layout_height="45dp"
 
                             android:src="@drawable/ic_other_user"
-                            app:imageUrl="@{chatUser.user.image}" />
+                             />
 
                         <TextView
                             android:layout_width="45dp"
