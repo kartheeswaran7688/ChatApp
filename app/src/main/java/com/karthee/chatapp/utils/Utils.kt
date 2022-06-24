@@ -25,24 +25,12 @@ import com.google.gson.GsonBuilder
 import com.karthee.chatapp.R
 import com.karthee.chatapp.db.ChatUserDatabase
 import com.karthee.chatapp.db.data.GroupMessage
-import com.karthee.chatapp.models.Country
 import com.karthee.chatapp.models.UserStatus
 import java.text.SimpleDateFormat
 
 object Utils {
 
     private const val PERMISSION_REQ_CODE = 114
-
-  /*  private const val MIN: Long=1000 * 60
-    private const val HOUR= MIN * 60
-    private const val DAY= HOUR* 24
-    private const val WEEK= DAY * 7
-    private const val MONTH= WEEK * 4
-    private const val YEAR= MONTH * 12*/
-
-    fun getDefaultCountry() = Country("IN", "India", "+91", "INR")
-
-    fun clearNull(str: String?) = str?.trim() ?: ""
 
     @Suppress("DEPRECATION")
     fun isNetConnected(context: Context): Boolean {
@@ -87,9 +75,6 @@ object Utils {
         return GsonBuilder().create()
     }
 
-/*    fun <T> fromGson(json: String?, className: Class<T>?): T {
-        return getGSONObj().fromJson(json, className)
-    }*/
 
     fun isPermissionOk(vararg results: Int): Boolean {
         var isAllGranted = true
@@ -148,10 +133,6 @@ object Utils {
         }
     }
 
-   /* fun dpToPx(dp: Int): Int {
-        return (dp * Resources.getSystem().displayMetrics.density).toInt()
-    }
-*/
     fun setOnlineStatus(txtView: TextView, status: UserStatus, uId: String) {
         txtView.visibility= View.VISIBLE
         txtView.text= when {

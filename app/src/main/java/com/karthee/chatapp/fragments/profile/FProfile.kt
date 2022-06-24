@@ -1,22 +1,17 @@
 package com.karthee.chatapp.fragments.profile
 
 import android.app.Activity
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.CollectionReference
 import com.karthee.chatapp.R
 import com.karthee.chatapp.databinding.FProfileBinding
-import com.karthee.chatapp.databinding.FVerifyBinding
 import com.karthee.chatapp.models.UserStatus
-import com.karthee.chatapp.ui.activities.MainActivity
 import com.karthee.chatapp.utils.*
 import com.karthee.chatapp.views.CustomProgressView
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,9 +35,6 @@ class FProfile : Fragment() {
 
     private val viewModel: ProfileViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,16 +52,11 @@ class FProfile : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewmodel = viewModel
         progressView = CustomProgressView(context)
-        binding.imgProPic.setOnClickListener { ImageUtils.askPermission(this) }
         binding.fab.setOnClickListener { validate() }
         subscribeObservers()
     }
 
     private fun subscribeObservers() {
-        viewModel.progressProPic.observe(viewLifecycleOwner, { uploaded ->
-            binding.progressPro.toggle(uploaded)
-        })
-
         viewModel.profileUpdateState.observe(viewLifecycleOwner, {
             when (it) {
                 is LoadState.OnSuccess -> {
@@ -101,34 +88,8 @@ class FProfile : Fragment() {
 
     private fun validate() {
         val name = viewModel.name.value
-        if (!name.isNullOrEmpty() && name.length > 1 && !viewModel.progressProPic.value!!)
+        if (!name.isNullOrEmpty() && name.length > 1 )
             viewModel.storeProfileData()
-    }
-
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-            ImageUtils.cropImage(context, data, true)
-    }
-
-    private fun onCropResult(data: Intent?) {
-        try {
-            val imagePath: Uri? = ImageUtils.getCroppedImage(data)
-            imagePath?.let {
-                viewModel.uploadProfileImage(it)
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        ImageUtils.onImagePerResult(this, *grantResults)
     }
 
     override fun onDestroy() {

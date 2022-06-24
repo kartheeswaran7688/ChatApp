@@ -20,7 +20,7 @@ import com.karthee.chatapp.views.CustomProgressView
 import timber.log.Timber
 
 fun String.printMeD(){
-    Log.d("LetsChat:: ",this)
+    Log.d("ChatApp:: ",this)
 }
 
 fun Context.toast(msg: String){

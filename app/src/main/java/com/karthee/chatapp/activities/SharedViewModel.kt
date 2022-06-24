@@ -3,23 +3,16 @@ package com.karthee.chatapp.ui.activities
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.karthee.chatapp.db.daos.ChatUserDao
-import com.karthee.chatapp.models.Country
-import com.karthee.chatapp.utils.MPreference
 import com.karthee.chatapp.utils.ScreenState
 import com.karthee.chatapp.utils.printMeD
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.scopes.ActivityScoped
 import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
-import javax.inject.Singleton
 import kotlin.concurrent.schedule
 
 @HiltViewModel
 class SharedViewModel @Inject constructor() : ViewModel() {
-
-    val country = MutableLiveData<Country>()
 
     val openMainAct = MutableLiveData<Boolean>()
 
@@ -52,10 +45,6 @@ class SharedViewModel @Inject constructor() : ViewModel() {
 
     fun getState(): LiveData<ScreenState> {
         return _state
-    }
-
-    fun setCountry(country: Country) {
-        this.country.value = country
     }
 
 

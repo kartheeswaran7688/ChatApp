@@ -103,5 +103,4 @@ internal class ApiCall(val context: Context) {
 
     private fun createBody(body: String) =
         body.toRequestBody("application/json;charset=utf-8".toMediaTypeOrNull());
-
 }

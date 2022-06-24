@@ -6,10 +6,6 @@ import android.os.Looper
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.work.Data
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
-import androidx.work.WorkRequest
 import com.google.firebase.database.*
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
@@ -23,10 +19,6 @@ import com.karthee.chatapp.db.data.ChatUser
 import com.karthee.chatapp.db.data.Message
 import com.karthee.chatapp.di.MessageCollection
 import com.karthee.chatapp.models.UserStatus
-import com.karthee.chatapp.services.UploadWorker
-import com.karthee.chatapp.utils.Constants.CHAT_USER_DATA
-import com.karthee.chatapp.utils.Constants.MESSAGE_DATA
-import com.karthee.chatapp.utils.Constants.MESSAGE_FILE_URI
 import com.karthee.chatapp.utils.LogMessage
 import com.karthee.chatapp.utils.MPreference
 import com.karthee.chatapp.utils.UserUtils
@@ -227,27 +219,27 @@ constructor(
     fun insertUser(chatUser: ChatUser) {
         dbRepository.insertUser(chatUser)
     }
-
-    fun uploadToCloud(message: Message, fileUri: String) {
-        try {
-            dbRepository.insertMessage(message)
-            removeTypingCallbacks()
-            val messageData = Json.encodeToString(message)
-            val chatUserData = Json.encodeToString(chatUser)
-            val data = Data.Builder()
-                .putString(MESSAGE_FILE_URI, fileUri)
-                .putString(MESSAGE_DATA, messageData)
-                .putString(CHAT_USER_DATA, chatUserData)
-                .build()
-            val uploadWorkRequest: WorkRequest =
-                OneTimeWorkRequestBuilder<UploadWorker>()
-                    .setInputData(data)
-                    .build()
-            WorkManager.getInstance(context).enqueue(uploadWorkRequest)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
+//
+//    fun uploadToCloud(message: Message, fileUri: String) {
+//        try {
+//            dbRepository.insertMessage(message)
+//            removeTypingCallbacks()
+//            val messageData = Json.encodeToString(message)
+//            val chatUserData = Json.encodeToString(chatUser)
+//            val data = Data.Builder()
+//                .putString(MESSAGE_FILE_URI, fileUri)
+//                .putString(MESSAGE_DATA, messageData)
+//                .putString(CHAT_USER_DATA, chatUserData)
+//                .build()
+//            val uploadWorkRequest: WorkRequest =
+//                OneTimeWorkRequestBuilder<UploadWorker>()
+//                    .setInputData(data)
+//                    .build()
+//            WorkManager.getInstance(context).enqueue(uploadWorkRequest)
+//        } catch (e: Exception) {
+//            e.printStackTrace()
+//        }
+//    }
 }
 
 

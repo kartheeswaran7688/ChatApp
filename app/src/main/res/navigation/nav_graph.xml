@@ -9,17 +9,7 @@
         android:id="@+id/FLogIn"
         android:name="com.karthee.chatapp.fragments.login.LoginFragment"
         android:label="LoginFrag"
-        tools:layout="@layout/f_login">
-        <action
-            android:id="@+id/action_FLogIn_to_FCountries"
-            app:destination="@id/FCountries"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
-        <action
-            android:id="@+id/action_FLogIn_to_FVerify"
-            app:destination="@id/FVerify" />
+        tools:layout="@layout/f_login_email">
         <action
             android:id="@+id/action_FLogIn_to_FProfile"
             app:destination="@id/FProfile"
@@ -29,29 +19,6 @@
         <action
             android:id="@+id/action_FLogIn_to_FSingleChatHome"
             app:destination="@id/FSingleChatHome"
-            app:launchSingleTop="true"
-            app:popUpTo="@+id/nav_graph"
-            app:popUpToInclusive="true" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/FCountries"
-        android:name="com.karthee.chatapp.fragments.countries.FCountries"
-        android:label="FCountries"
-        tools:layout="@layout/f_countries">
-        <action
-            android:id="@+id/action_FCountries_to_FLogIn"
-            app:destination="@id/FLogIn" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/FVerify"
-        android:name="com.karthee.chatapp.fragments.login.FVerify"
-        android:label="FVerify"
-        tools:layout="@layout/f_verify">
-        <action
-            android:id="@+id/action_FVerify_to_FProfile"
-            app:destination="@id/FProfile"
             app:launchSingleTop="true"
             app:popUpTo="@+id/nav_graph"
             app:popUpToInclusive="true" />
@@ -98,15 +65,6 @@
         <action
             android:id="@+id/action_FGroupChatHome_to_FGroupChat"
             app:destination="@id/FGroupChat" />
-    </fragment>
-    <fragment
-        android:id="@+id/FSearch"
-        android:name="com.karthee.chatapp.fragments.search.FSearch"
-        android:label="FSearch"
-        tools:layout="@layout/f_search" >
-        <action
-            android:id="@+id/action_FSearch_to_FSingleChat"
-            app:destination="@id/FSingleChat" />
     </fragment>
     <fragment
         android:id="@+id/FMyProfile"

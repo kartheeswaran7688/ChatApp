@@ -9,7 +9,6 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlinx-serialization'
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.3"
 
     buildFeatures{
         dataBinding = true
@@ -18,7 +17,7 @@ android {
 
     defaultConfig {
         applicationId "com.karthee.chatapp"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -102,7 +101,7 @@ dependencies {
     implementation "androidx.room:room-ktx:2.2.6"
 
     //For device to device notification sending
-    //implementation 'com.github.a914-gowtham:fcm-sender:1.0.2'
+   // implementation 'com.github.a914-gowtham:fcm-sender:1.0.2'
 
     //Lottie
     implementation 'com.airbnb.android:lottie:3.7.0'
@@ -135,6 +134,9 @@ dependencies {
     // Work Manager
     implementation "androidx.work:work-runtime-ktx:$work_version"
     implementation "androidx.datastore:datastore-preferences:1.0.0-beta01"
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+//    implementation 'com.square.okhttp:okhttp:2.7.5'
+//    implementation 'com.square.okio:okio:2.10.0'
 
 
     // Local Unit Tests

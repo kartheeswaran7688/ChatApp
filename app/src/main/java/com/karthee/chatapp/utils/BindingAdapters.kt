@@ -54,18 +54,6 @@ object BindingAdapters {
         return str
     }
 
-    @BindingAdapter("imageUrl")
-    @JvmStatic
-    fun loadImage(view: ImageView, url: String?) {
-        if(url.isNullOrEmpty())
-            return
-        else {
-            ImageViewCompat.setImageTintList(view, null) //removing image tint
-            view.setPadding(0)
-        }
-        ImageUtils.loadUserImage(view, url)
-    }
-
     @BindingAdapter("lastMessage")
     @JvmStatic
     fun setLastMessage(txtView: TextView, msgList: List<Message>) {
@@ -330,12 +318,12 @@ if (list.size<=2){
         val messages=group.messages
         if (messages.isEmpty()){
             val createdBy=group.group.createdBy
-            val msg="Created by ${group.group.members?.first { it.id==createdBy }?.localName}"
+            val msg="Created by ${group.group.members?.first { it.id==createdBy }?.user?.userName}"
             txtView.text=msg
         }
         else{
             val message=messages.last()
-            val localName=group.group.members?.first { it.id==message.from }?.localName
+            val localName=group.group.members?.first { it.id==message.from }?.user?.userName
             val txtMsg="$localName : ${getLastMsgTxt(message)}"
             txtView.text=txtMsg
         }

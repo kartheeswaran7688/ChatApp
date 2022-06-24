@@ -55,15 +55,12 @@ class FMyProfile : Fragment(R.layout.f_my_profile) {
         progressView = CustomProgressView(context)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
-        binding.imageProfile.setOnClickListener {
-             ImageUtils.askPermission(this)
-        }
+
         binding.btnSaveChanges.setOnClickListener {
             val newName = viewModel.userName.value
             val about = viewModel.about.value
             val image=viewModel.imageUrl.value
             when {
-                viewModel.isUploading.value!! -> context.toast("Profile picture is uploading!")
                 newName.isNullOrBlank() -> context.toast("User name can't be empty!")
                 else -> {
                     context.window.decorView.clearFocus()

@@ -26,15 +26,14 @@
                 <ImageView
                     android:id="@+id/img_pro_pic"
                     style="@style/FView"
-                    android:src="@drawable/ic_other_user"
-                    app:imageUrl="@{viewmodel.profilePicUrl}"/>
+                    android:src="@drawable/ic_other_user" />
 
                 <ProgressBar
                     android:id="@+id/progress_pro"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_centerInParent="true"
-                    android:visibility="@{viewmodel.progressProPic ? View.VISIBLE : View.GONE}" />
+                    android:visibility="gone" />
 
             </RelativeLayout>
 
@@ -42,7 +41,7 @@
                 android:id="@+id/edt_name"
                 style="@style/VView"
                 android:layout_marginTop="35dp"
-                android:background="@android:color/transparent"
+                android:background="@drawable/shape_edit_bg"
                 android:fontFamily="@font/font_semi"
                 android:hint="@string/txt_user_name"
                 android:inputType="textPersonName|textCapWords"

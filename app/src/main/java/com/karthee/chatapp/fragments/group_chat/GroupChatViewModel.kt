@@ -7,12 +7,6 @@ import android.text.TextUtils
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.work.Data
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
-import androidx.work.WorkRequest
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ListenerRegistration
@@ -22,14 +16,10 @@ import com.karthee.chatapp.core.GroupMsgStatusUpdater
 import com.karthee.chatapp.core.OnGrpMessageResponse
 import com.karthee.chatapp.db.DbRepository
 import com.karthee.chatapp.db.daos.ChatUserDao
-import com.karthee.chatapp.db.daos.GroupDao
 import com.karthee.chatapp.db.daos.GroupMessageDao
 import com.karthee.chatapp.db.data.Group
 import com.karthee.chatapp.db.data.GroupMessage
 import com.karthee.chatapp.di.GroupCollection
-import com.karthee.chatapp.fragments.single_chat.toDataClass
-import com.karthee.chatapp.services.GroupUploadWorker
-import com.karthee.chatapp.utils.Constants
 import com.karthee.chatapp.utils.LogMessage
 import com.karthee.chatapp.utils.MPreference
 import com.karthee.chatapp.utils.UserUtils
@@ -41,7 +31,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -194,7 +183,7 @@ class GroupChatViewModel @Inject constructor(
         UserUtils.insertGroupMsg(groupMsgDao, message)
     }
 
-    fun uploadToCloud(message: GroupMessage, fileUri: String) {
+    /*fun uploadToCloud(message: GroupMessage, fileUri: String) {
         try {
             UserUtils.insertGroupMsg(groupMsgDao, message)
             removeTypingCallbacks()
@@ -214,7 +203,7 @@ class GroupChatViewModel @Inject constructor(
             e.printStackTrace()
         }
     }
-
+*/
 
     private val messageListener = object : OnGrpMessageResponse {
         override fun onSuccess(message: GroupMessage) {

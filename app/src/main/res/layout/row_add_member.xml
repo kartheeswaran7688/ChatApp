@@ -31,7 +31,7 @@
                     android:id="@+id/image_profile"
                     style="@style/FView"
                     android:src="@drawable/ic_other_user"
-                    app:imageUrl="@{chatUser.user.image}" />
+                     />
 
                 <TextView
                     android:visibility="@{(chatUser.user.image==null || chatUser.user.image.isEmpty) ? View.VISIBLE : View.GONE}"

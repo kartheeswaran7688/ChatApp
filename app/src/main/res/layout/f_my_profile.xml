@@ -28,7 +28,6 @@
                 <ImageView
                     android:id="@+id/image_profile"
                     style="@style/FView"
-                    imageUrl="@{viewModel.imageUrl}"
                     android:src="@drawable/ic_other_user" />
 
                 <ProgressBar
@@ -50,21 +49,6 @@
                     android:id="@+id/edt_user_name"
                     android:inputType="textPersonName|textCapWords"
                     android:text="@={viewModel.userName}" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/StyleInputLayout"
-                android:layout_marginTop="15dp"
-                android:hint="@string/txt_your_status">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/StyleEdtInput"
-                    android:inputType="textMultiLine|textCapSentences"
-                    android:maxLength="60"
-                    android:maxLines="3"
-                    android:id="@+id/edt_status"
-                    android:text="@={viewModel.about}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
