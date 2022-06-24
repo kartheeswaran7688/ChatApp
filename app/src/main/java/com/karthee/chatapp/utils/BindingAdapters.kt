@@ -318,12 +318,12 @@ if (list.size<=2){
         val messages=group.messages
         if (messages.isEmpty()){
             val createdBy=group.group.createdBy
-            val msg="Created by ${group.group.members?.first { it.id==createdBy }?.localName}"
+            val msg="Created by ${group.group.members?.first { it.id==createdBy }?.user?.userName}"
             txtView.text=msg
         }
         else{
             val message=messages.last()
-            val localName=group.group.members?.first { it.id==message.from }?.localName
+            val localName=group.group.members?.first { it.id==message.from }?.user?.userName
             val txtMsg="$localName : ${getLastMsgTxt(message)}"
             txtView.text=txtMsg
         }

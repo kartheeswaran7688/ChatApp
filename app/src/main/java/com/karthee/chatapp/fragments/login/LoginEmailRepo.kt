@@ -12,6 +12,7 @@ import com.karthee.chatapp.utils.LogInFailedState
 import com.karthee.chatapp.utils.printMeD
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ActivityRetainedScoped
+import java.util.logging.Handler
 import javax.inject.Inject
 
 class LoginEmailRepo @Inject constructor(@ActivityRetainedScoped val actContxt: MainActivity,
@@ -73,7 +74,12 @@ class LoginEmailRepo @Inject constructor(@ActivityRetainedScoped val actContxt: 
         auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(object:OnCompleteListener<AuthResult>{
             override fun onComplete(result: Task<AuthResult>) {
                 if(result.isSuccessful) {
-                    signIn(email,pass,true)
+                   android.os.Handler().postDelayed(object:Runnable{
+                        override fun run() {
+                            signIn(email,pass,true)
+                        }
+                    },3000)
+
                     //signIn(email,pass)
                 }else {
                     failedState.value = LogInFailedState.Failed
