@@ -3,35 +3,23 @@ ChatApp is a Sample Messaging Android application built to demonstrate the use o
 
 - Create a firebase project and replace the google-services.json file which you get from your firebase project console
 - Following firebase services need to be enabled in the firebase console
-  - Phone Auth
+  - Email Auth
   - Cloud Firestore
   - Realtime Database
   - Storage
   - Composite indexes should be created for contact query(link for enabling indexes could be found from logcat while using the app)
 
-
-
-<p float="center">
-  <img src="demo_video.gif" />
-</p>
- 
 ## Features ✨
 - One on one chat
 - Group Chat
 - Typing status for one on one and group chat
 - Unread messages count
 - Message status for failed,sent,delivered and seen
-- Supported message types
-  - Text
-  - Voice
-  - Sticker and Gif
-- Attachments 
-  - Image
-  - Video - InProgress
+- Supported message types (Text Only)
 - Notification actions for reply and mark as read
-- Search users by username 
 
-## Built With 🛠
+
+## Built With 
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
 - [Coroutines & Flow](https://kotlinlang.org/docs/reference/coroutines-overview.html) - For asynchronous and more..
 - [Android Architecture Components](https://developer.android.com/topic/libraries/architecture) - Collection of libraries that help you design quality, robust, testable, and maintainable apps.
