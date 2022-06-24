@@ -21,6 +21,10 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.karthee.chatapp.db.data.ChatUser
 import com.karthee.chatapp.db.data.Group
 import com.karthee.chatapp.fragments.single_chat_home.FSingleChatHomeDirections
@@ -108,7 +112,8 @@ class MainActivity : ActBase() {
             val userData = intent.getParcelableExtra<ChatUser>(Constants.CHAT_USER_DATA)
             val groupData = intent.getParcelableExtra<Group>(Constants.GROUP_DATA)
 
-            if (preference.isLoggedIn() && navController.isValidDestination(R.id.FLogIn)) {
+            if (FirebaseAuth.getInstance().currentUser != null && navController.isValidDestination(R.id.FLogIn)) {
+
                 if (preference.getUserProfile() == null)
                     navController.navigate(R.id.action_FLogIn_to_FProfile)
                 else
@@ -143,11 +148,6 @@ class MainActivity : ActBase() {
                 R.id.FGroupChatHome -> {
                     binding.bottomNav.selectedItemId = R.id.nav_group
                     showView()
-                }
-                R.id.FSearch -> {
-                    binding.bottomNav.selectedItemId = R.id.nav_search
-                    showView()
-                    binding.fab.hide()
                 }
                 R.id.FMyProfile -> {
                     binding.bottomNav.selectedItemId = R.id.nav_profile
@@ -254,14 +254,6 @@ class MainActivity : ActBase() {
                     }
                     true
                 }
-                R.id.nav_search -> {
-                    if (isNotSameDestination(R.id.FSearch)) {
-                        searchItem.collapseActionView()
-                        Navigation.findNavController(this, R.id.nav_host_fragment)
-                            .navigate(R.id.FSearch)
-                    }
-                    true
-                }
                 else -> {
                     if (isNotSameDestination(R.id.FMyProfile)) {
                         searchItem.collapseActionView()
@@ -297,13 +289,6 @@ class MainActivity : ActBase() {
         permissions: Array<out String>,
         grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        /* val navHostFragment = supportFragmentManager.fragments.first() as? NavHostFragment
-         if (navHostFragment != null) {
-             val childFragments = navHostFragment.childFragmentManager.fragments
-             childFragments.forEach { fragment ->
-                 fragment.onRequestPermissionsResult(requestCode, permissions, grantResults)
-             }
-         }*/
     }
 
     override fun onBackPressed() {

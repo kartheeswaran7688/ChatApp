@@ -227,27 +227,27 @@ constructor(
     fun insertUser(chatUser: ChatUser) {
         dbRepository.insertUser(chatUser)
     }
-
-    fun uploadToCloud(message: Message, fileUri: String) {
-        try {
-            dbRepository.insertMessage(message)
-            removeTypingCallbacks()
-            val messageData = Json.encodeToString(message)
-            val chatUserData = Json.encodeToString(chatUser)
-            val data = Data.Builder()
-                .putString(MESSAGE_FILE_URI, fileUri)
-                .putString(MESSAGE_DATA, messageData)
-                .putString(CHAT_USER_DATA, chatUserData)
-                .build()
-            val uploadWorkRequest: WorkRequest =
-                OneTimeWorkRequestBuilder<UploadWorker>()
-                    .setInputData(data)
-                    .build()
-            WorkManager.getInstance(context).enqueue(uploadWorkRequest)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
+//
+//    fun uploadToCloud(message: Message, fileUri: String) {
+//        try {
+//            dbRepository.insertMessage(message)
+//            removeTypingCallbacks()
+//            val messageData = Json.encodeToString(message)
+//            val chatUserData = Json.encodeToString(chatUser)
+//            val data = Data.Builder()
+//                .putString(MESSAGE_FILE_URI, fileUri)
+//                .putString(MESSAGE_DATA, messageData)
+//                .putString(CHAT_USER_DATA, chatUserData)
+//                .build()
+//            val uploadWorkRequest: WorkRequest =
+//                OneTimeWorkRequestBuilder<UploadWorker>()
+//                    .setInputData(data)
+//                    .build()
+//            WorkManager.getInstance(context).enqueue(uploadWorkRequest)
+//        } catch (e: Exception) {
+//            e.printStackTrace()
+//        }
+//    }
 }
 
 

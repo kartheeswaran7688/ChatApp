@@ -33,13 +33,11 @@ class FMyProfileViewModel @Inject constructor(
 
     val isUploading = MutableLiveData(false)
 
-    private val emailData = userProfile?.email
-
     private val storageRef = UserUtils.getStorageRef(context)
 
     private val docuRef = UserUtils.getDocumentRef(context)
 
-    val email = MutableLiveData("${emailData}")
+    val email = MutableLiveData("${userProfile?.email}")
 
     val profileUpdateState = MutableLiveData<LoadState>()
 

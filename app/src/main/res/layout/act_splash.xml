@@ -9,6 +9,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:src="@drawable/ic_chat_logo"/>
+        android:src="@drawable/ic_launcher_background"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -12,10 +12,12 @@ import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.ktx.Firebase
 import com.karthee.chatapp.R
 import com.karthee.chatapp.TYPE_LOGGED_IN
 import com.karthee.chatapp.models.Country
+import com.karthee.chatapp.models.ModelDeviceDetails
 import com.karthee.chatapp.models.ModelMobile
 import com.karthee.chatapp.models.UserProfile
 import com.karthee.chatapp.utils.*
@@ -23,6 +25,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import dagger.hilt.android.scopes.ActivityScoped
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
@@ -38,14 +42,17 @@ constructor(@ApplicationContext private val context: Context,
     val country = MutableLiveData<Country>()
 
     val email = MutableLiveData<String>()
+
     val password = MutableLiveData<String>()
 
+    val profileUpdateState = MutableLiveData<LoadState>()
 
     val userProfileGot=MutableLiveData<Boolean>()
 
     private val progress = MutableLiveData(false)
 
     private val verifyProgress = MutableLiveData(false)
+
 
     var canResend: Boolean = false
 
@@ -73,12 +80,13 @@ constructor(@ApplicationContext private val context: Context,
     }
 
     fun register(email:String,pass:String) {
-        logInRepo.registerUser(email,pass)
+        logInRepo.registerAndSignIn(email,pass)
     }
 
     fun login(email: String,pass: String) {
         logInRepo.signIn(email,pass)
     }
+
 
     fun setProgress(show: Boolean) {
         progress.value = show
@@ -167,6 +175,11 @@ constructor(@ApplicationContext private val context: Context,
         return logInRepo.getTaskResult()
     }
 
+    fun getRegisterTaskResult(): LiveData<Task<AuthResult>> {
+        return logInRepo.getRegisterTaskResult()
+    }
+
+
     fun getFailed(): LiveData<LogInFailedState> {
         return logInRepo.getFailed()
     }
@@ -216,6 +229,8 @@ constructor(@ApplicationContext private val context: Context,
                 context.toast(e.message.toString())
             }
     }
+
+
 
     private fun checkLastDevice(appUser: UserProfile?) {
         try {
